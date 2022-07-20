@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,5 +49,6 @@ public class Product {
 	
 	@ManyToOne
 	@JoinColumn(name="category_id")
+	@JsonIgnore
 	Category category;
 }

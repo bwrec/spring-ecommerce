@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.Ecommerce.commons.APIResponse;
-import com.company.Ecommerce.dto.ProductDto;
 import com.company.Ecommerce.model.Category;
 import com.company.Ecommerce.service.CategoryService;
 
