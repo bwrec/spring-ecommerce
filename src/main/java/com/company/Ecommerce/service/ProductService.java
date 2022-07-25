@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.company.Ecommerce.dto.ProductDto;
+import com.company.Ecommerce.exceptions.ProductNotExistsException;
 import com.company.Ecommerce.model.Category;
 import com.company.Ecommerce.model.Product;
 import com.company.Ecommerce.repository.ProductRepository;
@@ -52,6 +52,15 @@ public class ProductService {
 
 	public boolean findById(Integer prodId) {
 		return productRepository.findById(prodId).isPresent();
+	}
+	
+	public Product findById(int productId) throws ProductNotExistsException{
+		Optional<Product> optionalProduct = productRepository.findById(productId);
+		System.out.println("[ "+productId+" ]");
+		if(!optionalProduct.isPresent()) {
+			throw new ProductNotExistsException("Product ID "+productId+" is invalid");
+		}
+		return optionalProduct.get();
 	}
 
 	public void updateProduct(Integer prodId, ProductDto productDto) {
